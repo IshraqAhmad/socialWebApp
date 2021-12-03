@@ -1,0 +1,18 @@
+{{#each @todos as |todo|}}
+  <div class='card'>
+    <div class='card-body'>
+      <div class='d-flex flex-wrap justify-content-between mb-2'>
+        <span
+          class='font-size-xs line-height-xs text-uppercase text-muted font-weight-semibold'
+        >{{todo.due_on}}</span>
+        <span
+          class='font-size-xs line-height-xs text-uppercase text-success font-weight-semibold'
+        >{{todo.status}}</span>
+      </div>
+      <h6 class='pt-1'>
+        {{todo.title}}
+      </h6>
+    </div>
+  </div>
+{{/each}}
+{{yield}}

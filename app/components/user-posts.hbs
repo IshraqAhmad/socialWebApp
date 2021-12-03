@@ -1,0 +1,33 @@
+{{#each @posts as |post|}}
+  <div class='col-lg-6'>
+    <div class='card'>
+      <div class='card-header header-elements-sm-inline'>
+        <h6 class='card-title'>{{post.title}}</h6>
+      </div>
+
+      <div class='card-body'>
+        <blockquote class='blockquote blockquote-bordered py-2 pl-3 mb-0'>
+          <p class='mb-2 font-size-base'>{{post.body}}</p>
+        </blockquote>
+      </div>
+
+      <div
+        class='card-footer bg-transparent d-sm-flex justify-content-sm-between align-items-sm-center border-top-0 pt-0 pb-3'
+      >
+        <ul class='list-inline mb-0'>
+          <li class='list-inline-item'><a href='#' class='text-body'><i
+                class='icon-eye4 mr-2'
+              ></i>
+              438</a></li>
+          <li class='list-inline-item'><a href='#' class='text-body'><i
+                class='icon-comment-discussion mr-2'
+              ></i>
+              71</a></li>
+        </ul>
+
+        <a href='#' class='btn btn-link p-0 mt-2 mt-sm-0'>Read post</a>
+      </div>
+    </div>
+  </div>
+{{/each}}
+{{yield}}
