@@ -4,10 +4,16 @@
       <div class='d-flex flex-wrap justify-content-between mb-2'>
         <span
           class='font-size-xs line-height-xs text-uppercase text-muted font-weight-semibold'
-        >{{todo.due_on}}</span>
-        <span
-          class='font-size-xs line-height-xs text-uppercase text-success font-weight-semibold'
-        >{{todo.status}}</span>
+        >{{moment-from-now todo.due_on}}</span>
+        {{#if (eq todo.status 'completed')}}
+          <span
+            class='font-size-xs line-height-xs text-uppercase text-success font-weight-semibold'
+          >{{todo.status}}</span>
+        {{else}}
+          <span
+            class='font-size-xs line-height-xs text-uppercase text-warning font-weight-semibold'
+          >{{todo.status}}</span>
+        {{/if}}
       </div>
       <h6 class='pt-1'>
         {{todo.title}}
