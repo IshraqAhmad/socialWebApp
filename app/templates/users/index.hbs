@@ -28,6 +28,7 @@
     </div>
   </div>
 </div>
+<!-- /page header -->
 <!-- Content area -->
 <div class='content pt-0'>
 
@@ -66,8 +67,16 @@
                   </a>
 
                   <div class='dropdown-menu dropdown-menu-right'>
-                    <a href='#' class='dropdown-item'>View </a>
-                    <a href='#' class='dropdown-item'>Edit </a>
+                    <LinkTo
+                      @route='users.view'
+                      @model={{user.id}}
+                      class='dropdown-item'
+                    >View </LinkTo>
+                    <LinkTo
+                      @route='users.edit'
+                      @model={{user.id}}
+                      class='dropdown-item'
+                    >Edit </LinkTo>
                     <a href='#' class='dropdown-item'> Delete </a>
                   </div>
                 </div>
@@ -82,5 +91,3 @@
   <!-- /basic responsive configuration -->
 </div>
 <!-- Content area -->
-<!-- /page header -->
-{{outlet}}

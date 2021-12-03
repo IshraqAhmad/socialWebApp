@@ -9,8 +9,8 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('index', { path: '' });
   this.route('users', function () {
-    this.route('view');
-    this.route('edit');
+    this.route('view', { path: '/view/:userid' });
+    this.route('edit', { path: '/edit/:userid' });
   });
   // Catch-all error page, put your routes above this one
   this.route('not-found', { path: '/*path' });
