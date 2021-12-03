@@ -12,4 +12,6 @@ Router.map(function () {
     this.route('view');
     this.route('edit');
   });
+  // Catch-all error page, put your routes above this one
+  this.route('not-found', { path: '/*path' });
 });
