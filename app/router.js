@@ -12,6 +12,14 @@ Router.map(function () {
     this.route('view', { path: '/view/:userid' });
     this.route('edit', { path: '/edit/:userid' });
   });
+  this.route('posts', function () {
+    this.route('add');
+    this.route('view');
+  });
+  this.route('todo', function () {
+    this.route('add');
+    this.route('view');
+  });
   // Catch-all error page, put your routes above this one
   this.route('not-found', { path: '/*path' });
 });
