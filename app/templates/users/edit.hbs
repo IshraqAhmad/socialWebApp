@@ -18,19 +18,15 @@
             <form action='#'>
               <div class='form-group'>
                 <label>Enter your Name:</label>
-                <input
-                  type='text'
-                  class='form-control'
-                  placeholder='Eugene Kopyov'
-                />
+                <input type='text' class='form-control' value={{model.name}} />
               </div>
 
               <div class='form-group'>
                 <label>Enter your Email</label>
                 <input
-                  type='password'
+                  type='email'
                   class='form-control'
-                  placeholder='Your strong password'
+                  value={{model.email}}
                 />
               </div>
 
@@ -39,7 +35,7 @@
                 <input
                   type='text'
                   class='form-control'
-                  placeholder='Your Gender'
+                  value={{model.gender}}
                 />
               </div>
 
@@ -48,24 +44,9 @@
                 <input
                   type='text'
                   class='form-control'
-                  placeholder='Your Status'
+                  value={{model.status}}
                 />
               </div>
-
-              {{! <div class="form-group">
-													<label>Attach screenshot:</label>
-													<label class="custom-file">
-														<input type="file" class="custom-file-input">
-														<span class="custom-file-label">Choose file</span>
-													</label>
-													<span class="form-text text-muted">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
-												</div>
-
-												<div class="form-group">
-													<label>Your message:</label>
-													<textarea rows="5" cols="5" class="form-control" placeholder="Enter your message here"></textarea>
-												</div> }}
-
               <div class='text-right'>
                 <button type='submit' class='btn btn-primary'>Submit form
                   <i class='icon-paperplane ml-2'></i></button>
