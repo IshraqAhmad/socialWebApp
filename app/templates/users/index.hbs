@@ -2,63 +2,11 @@
 {{page-header heading='Users'}}
 <!-- Content area -->
 <div class='content pt-0'>
-
-  <!-- Basic responsive configuration -->
-  <div class='card'>
-    <div class='card-header'>
-      <h5 class='card-title'>All Users</h5>
-    </div>
-
-    <table class='table datatable-responsive'>
-      <thead>
-        <tr>
-          <th>User Name</th>
-          <th>Email</th>
-          <th>Gender</th>
-          <th>Status</th>
-          <th class='text-center'>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each @model as |user|}}
-          <tr>
-            <td>{{user.name}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.gender}}</td>
-            {{#if (eq user.status 'active')}}
-              <td><span class='badge badge-success'>Active</span></td>
-            {{else}}
-              <td><span class='badge badge-danger'>InActive</span></td>
-            {{/if}}
-            <td class='text-center'>
-              <div class='list-icons'>
-                <div class='dropdown'>
-                  <a href='#' class='list-icons-item' data-toggle='dropdown'>
-                    <i class='icon-menu9'></i>
-                  </a>
-
-                  <div class='dropdown-menu dropdown-menu-right'>
-                    <LinkTo
-                      @route='users.view'
-                      @model={{user.id}}
-                      class='dropdown-item'
-                    >View </LinkTo>
-                    <LinkTo
-                      @route='users.edit'
-                      @model={{user.id}}
-                      class='dropdown-item'
-                    >Edit </LinkTo>
-                    <a href='#' class='dropdown-item'> Delete </a>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-        {{/each}}
-
-      </tbody>
-    </table>
-  </div>
-  <!-- /Basic responsive configuration -->
+  {{user-table
+    title='All Users'
+    users=model.data
+    route='users.index'
+    pagination=model.meta.pagination
+  }}
 </div>
 <!-- Content area -->

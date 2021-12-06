@@ -1,0 +1,70 @@
+<div class='card'>
+  <div class='card-header'>
+    <h5 class='card-title'>{{@title}}</h5>
+  </div>
+  {{#if @users}}
+    <!-- User Table -->
+    <table class='table datatable-responsive'>
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Status</th>
+          <th class='text-center'>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each @users as |user|}}
+          <tr>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.gender}}</td>
+            {{#if (eq user.status 'active')}}
+              <td><span class='badge badge-success'>Active</span></td>
+            {{else}}
+              <td><span class='badge badge-danger'>InActive</span></td>
+            {{/if}}
+            <td class='text-center'>
+              <div class='list-icons'>
+                <div class='dropdown'>
+                  <a href='#' class='list-icons-item' data-toggle='dropdown'>
+                    <i class='icon-menu9'></i>
+                  </a>
+
+                  <div class='dropdown-menu dropdown-menu-right'>
+                    <LinkTo
+                      @route='users.view'
+                      @model={{user.id}}
+                      class='dropdown-item'
+                    >View </LinkTo>
+                    <LinkTo
+                      @route='users.edit'
+                      @model={{user.id}}
+                      class='dropdown-item'
+                    >Edit </LinkTo>
+                    <a href='#' class='dropdown-item'> Delete </a>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <!-- /User Table -->
+
+    <!-- User Pagination -->
+    {{pagination
+      maxPagesInList='10'
+      route=@route
+      recordCount=@pagination.total
+      pageSize=@pagination.limit
+      pageNumber=@pagination.page
+    }}
+    <!-- /User Pagination -->
+  {{else}}
+    <div class='row'><p>No users are here... yet.</p></div>
+  {{/if}}
+</div>
+{{yield}}
