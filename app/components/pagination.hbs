@@ -6,7 +6,7 @@
   >
     <LinkTo
       aria-label='Previous'
-      @route='users.index'
+      @route={{@route}}
       @query={{hash page=prevPageNumber}}
       class='page-link'
       data-test-selector='previous-page-link'
@@ -19,7 +19,7 @@
       data-test-selector='page-number'
     >
       <LinkTo
-        @route='users.index'
+        @route={{@route}}
         @query={{hash page=page.number}}
         class='page-link'
         data-test-selector='page-number-link'
