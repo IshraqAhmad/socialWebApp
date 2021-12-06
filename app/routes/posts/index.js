@@ -1,10 +1,18 @@
 import Route from '@ember/routing/route';
 
 export default class PostsIndexRoute extends Route {
-  async model() {
-    let response = await fetch('https://gorest.co.in/public/v1/posts');
+  queryParams = {
+    page: {
+      refreshModel: true,
+      replace: true,
+    },
+  };
+
+  async model(params) {
+    let response = await fetch(
+      'https://gorest.co.in/public/v1/posts?page=' + params.page
+    );
     let result = await response.json();
-    let posts = result.data;
-    return posts;
+    return result;
   }
 }

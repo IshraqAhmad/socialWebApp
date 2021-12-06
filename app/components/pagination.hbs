@@ -1,0 +1,42 @@
+<ul class='pagination pagination-separated align-self-center'>
+
+  <li
+    class='page-item {{if isPrevDisabled "disabled"}}'
+    data-test-selector='previous-page'
+  >
+    <LinkTo
+      aria-label='Previous'
+      @route={{@route}}
+      @query={{hash page=prevPageNumber}}
+      class='page-link'
+      data-test-selector='previous-page-link'
+    > <span aria-hidden='true'>&laquo;</span></LinkTo>
+  </li>
+
+  {{#each pages as |page|}}
+    <li
+      class='page-item {{if page.active " active"}}'
+      data-test-selector='page-number'
+    >
+      <LinkTo
+        @route={{@route}}
+        @query={{hash page=page.number}}
+        class='page-link'
+        data-test-selector='page-number-link'
+      >{{page.number}}</LinkTo>
+    </li>
+  {{/each}}
+
+  <li
+    class='page-item {{if isNextDisabled "disabled"}}'
+    data-test-selector='next-page'
+  >
+    <LinkTo
+      aria-label='Next'
+      @route={{@route}}
+      @query={{hash page=nextPageNumber}}
+      class='page-link'
+      data-test-selector='next-number-link'
+    ><span aria-hidden='true'>&raquo;</span></LinkTo>
+  </li>
+</ul>
