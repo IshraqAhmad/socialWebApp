@@ -1,45 +1,13 @@
 {{page-title 'Users'}}
 {{page-header heading='Users'}}
-<PageContent>
-  <CardTable @title='All Users'>
+{{#page-content}}
+  {{#card-table title='All Users'}}
     {{#if @model.data}}
-      <Table @headers={{@model.headers}}>
+      {{#table headers=@model.headers}}
         {{#each @model.data as |user|}}
-          <tr>
-            <td>{{user.name}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.gender}}</td>
-            {{#if (eq user.status 'active')}}
-              <td><span class='badge badge-success'>Active</span></td>
-            {{else}}
-              <td><span class='badge badge-danger'>InActive</span></td>
-            {{/if}}
-            <td class='text-center'>
-              <div class='list-icons'>
-                <div class='dropdown'>
-                  <a href='#' class='list-icons-item' data-toggle='dropdown'>
-                    <i class='icon-menu9'></i>
-                  </a>
-
-                  <div class='dropdown-menu dropdown-menu-right'>
-                    <LinkTo
-                      @route='users.view'
-                      @model={{user.id}}
-                      class='dropdown-item'
-                    >View </LinkTo>
-                    <LinkTo
-                      @route='users.edit'
-                      @model={{user.id}}
-                      class='dropdown-item'
-                    >Edit </LinkTo>
-                    <a href='#' class='dropdown-item'> Delete </a>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
+          {{users/user-row user=user}}
         {{/each}}
-      </Table>
+      {{/table}}
     {{else}}
       {{no-data-overlay message='No users are here... yet.'}}
     {{/if}}
@@ -50,5 +18,5 @@
       pageSize=@model.meta.pagination.limit
       pageNumber=@model.meta.pagination.page
     }}
-  </CardTable>
-</PageContent>
+  {{/card-table}}
+{{/page-content}}
