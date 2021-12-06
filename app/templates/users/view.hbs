@@ -132,17 +132,25 @@
 
       <div class='tab-pane fade' id='inbox'>
         <!-- User Posts -->
-        <UserPosts>
-          {{user-posts posts=model.posts}}
-        </UserPosts>
+        <div class='row'>
+          {{#each @model.posts as |post|}}
+            <div class='col-lg-6'>
+              {{posts post=post}}
+            </div>
+          {{/each}}
+        </div>
         <!-- /User Posts -->
       </div>
 
       <div class='tab-pane fade' id='orders'>
         <!-- User Todo -->
-        <UserTodos>
-          {{user-todos todos=model.todos}}
-        </UserTodos>
+        <div class='row'>
+          {{#each @model.todos as |todo|}}
+            <div class='col-lg-6'>
+              {{todos todo=todo}}
+            </div>
+          {{/each}}
+        </div>
         <!-- /User Todo -->
       </div>
 

@@ -1,7 +1,13 @@
 {{page-title 'Posts'}}
 {{page-header heading='Posts'}}
 <PageContent>
-  {{user-posts posts=@model.data}}
+  <div class='row'>
+    {{#each @model.data as |post|}}
+      <div class='col-lg-6'>
+        {{posts post=post}}
+      </div>
+    {{/each}}
+  </div>
   {{pagination
     maxPagesInList='10'
     route='posts.index'
