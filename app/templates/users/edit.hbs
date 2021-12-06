@@ -1,2 +1,61 @@
-{{page-title "Edit"}}
-{{outlet}}
+{{page-title 'Edit'}}
+{{page-header heading='Users - Edit'}}
+<!-- Centered forms -->
+<div class='row justify-content-center'>
+  <div class='col-lg-6'>
+    <div class='card'>
+      <div class='card-header'>
+        <div class='row'>
+          <div class='col-lg-10 offset-lg-1'>
+            <h5 class='card-title'>User Edit Form</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class='card-body'>
+        <div class='row'>
+          <div class='col-lg-10 offset-lg-1'>
+            <form action='#'>
+              <div class='form-group'>
+                <label>Enter your Name:</label>
+                <input type='text' class='form-control' value={{model.name}} />
+              </div>
+
+              <div class='form-group'>
+                <label>Enter your Email</label>
+                <input
+                  type='email'
+                  class='form-control'
+                  value={{model.email}}
+                />
+              </div>
+
+              <div class='form-group'>
+                <label>Enter your Gender</label>
+                <input
+                  type='text'
+                  class='form-control'
+                  value={{model.gender}}
+                />
+              </div>
+
+              <div class='form-group'>
+                <label>Enter your Status</label>
+                <input
+                  type='text'
+                  class='form-control'
+                  value={{model.status}}
+                />
+              </div>
+              <div class='text-right'>
+                <button type='submit' class='btn btn-primary'>Submit form
+                  <i class='icon-paperplane ml-2'></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Centered forms -->
