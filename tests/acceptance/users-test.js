@@ -5,8 +5,6 @@ import { setupApplicationTest } from 'ember-qunit';
 module('Acceptance | users', function (hooks) {
   setupApplicationTest(hooks);
 
-
-
   hooks.beforeEach(async function () {
     //
   });
@@ -18,7 +16,7 @@ module('Acceptance | users', function (hooks) {
   });
 
   // test('can see list of users and transition to user route', async function (assert) {
-  //     // 
+  //     //
   // });
 
   // test('can page through list of users', async function (assert) {
@@ -26,7 +24,6 @@ module('Acceptance | users', function (hooks) {
   // });
 
   // test('can search for a user and transition to user route', async function (assert) {
-      //
+  //
   // });
-
 });
