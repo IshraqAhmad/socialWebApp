@@ -575,9 +575,9 @@ const App = (function () {
 // Initialize module
 // ------------------------------
 // When content is loaded
-document.addEventListener('DOMContentLoaded', function () {
-  App.initCore();
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//   App.initCore();
+// });
 
 // When page is fully loaded
 window.addEventListener('load', function () {
