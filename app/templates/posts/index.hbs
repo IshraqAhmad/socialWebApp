@@ -1,6 +1,6 @@
 {{page-title 'Posts'}}
 {{page-header heading='Posts'}}
-<PageContent>
+{{#page-content}}
   <div class='row'>
     {{#each @model.data as |post|}}
       <div class='col-lg-6'>
@@ -15,4 +15,4 @@
     pageSize=@model.meta.pagination.limit
     pageNumber=@model.meta.pagination.page
   }}
-</PageContent>
+{{/page-content}}

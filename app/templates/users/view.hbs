@@ -1,8 +1,6 @@
 {{page-title 'View'}}
 {{page-header heading='Users - View'}}
-<!-- Content area -->
-<div class='content pt-0'>
-
+{{#page-content}}
   <!-- Inner container -->
   <div class='d-lg-flex align-items-lg-start'>
 
@@ -41,7 +39,7 @@
               </div>
             </div>
 
-            <h6 class='font-weight-semibold mb-0'>{{model.user.name}}</h6>
+            <h6 class='font-weight-semibold mb-0'>{{@model.user.name}}</h6>
           </div>
 
           <ul class='nav nav-sidebar'>
@@ -91,7 +89,7 @@
               <label>Name</label>
               <input
                 type='text'
-                value={{model.user.name}}
+                value={{@model.user.name}}
                 class='form-control'
                 readonly
               />
@@ -101,7 +99,7 @@
               <label>Email</label>
               <input
                 type='text'
-                value={{model.user.email}}
+                value={{@model.user.email}}
                 class='form-control'
                 readonly
               />
@@ -111,7 +109,7 @@
               <label>Gender</label>
               <input
                 type='text'
-                value={{model.user.gender}}
+                value={{@model.user.gender}}
                 class='form-control'
                 readonly
               />
@@ -121,7 +119,7 @@
               <label>Status</label>
               <input
                 type='text'
-                value={{model.user.status}}
+                value={{@model.user.status}}
                 class='form-control'
                 readonly
               />
@@ -133,11 +131,15 @@
       <div class='tab-pane fade' id='inbox'>
         <!-- User Posts -->
         <div class='row'>
-          {{#each @model.posts as |post|}}
-            <div class='col-lg-6'>
-              {{posts post=post}}
-            </div>
-          {{/each}}
+          {{#if @model.todos}}
+            {{#each @model.posts as |post|}}
+              <div class='col-lg-6'>
+                {{posts post=post}}
+              </div>
+            {{/each}}
+          {{else}}
+            {{no-data-overlay message='No posts are here... yet.'}}
+          {{/if}}
         </div>
         <!-- /User Posts -->
       </div>
@@ -145,11 +147,15 @@
       <div class='tab-pane fade' id='orders'>
         <!-- User Todo -->
         <div class='row'>
-          {{#each @model.todos as |todo|}}
-            <div class='col-lg-6'>
-              {{todos todo=todo}}
-            </div>
-          {{/each}}
+          {{#if @model.todos}}
+            {{#each @model.todos as |todo|}}
+              <div class='col-lg-6'>
+                {{todos todo=todo}}
+              </div>
+            {{/each}}
+          {{else}}
+            {{no-data-overlay message='No todos are here... yet.'}}
+          {{/if}}
         </div>
         <!-- /User Todo -->
       </div>
@@ -159,6 +165,4 @@
 
   </div>
   <!-- /Inner container -->
-
-</div>
-<!-- /Content area -->
+{{/page-content}}
