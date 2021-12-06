@@ -53,18 +53,17 @@
       </tbody>
     </table>
     <!-- /User Table -->
-
-    <!-- User Pagination -->
-    {{pagination
-      maxPagesInList='10'
-      route=@route
-      recordCount=@pagination.total
-      pageSize=@pagination.limit
-      pageNumber=@pagination.page
-    }}
-    <!-- /User Pagination -->
   {{else}}
     <div class='row'><p>No users are here... yet.</p></div>
   {{/if}}
 </div>
+<!-- User Pagination -->
+{{pagination
+  maxPagesInList='10'
+  route=@route
+  recordCount=@pagination.total
+  pageSize=@pagination.limit
+  pageNumber=@pagination.page
+}}
+<!-- /User Pagination -->
 {{yield}}
