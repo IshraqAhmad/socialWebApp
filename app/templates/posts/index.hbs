@@ -1,24 +1,12 @@
 {{page-title 'Posts'}}
 {{page-header heading='Posts'}}
-
-
- <!-- Blog posts -->
-  <div class='row'>
-    {{user-posts posts=@model.data}}
-  </div>
-  <!-- Blog posts -->
-
-  <!-- Post Pagination -->
-  <div class='justify-content-center'>
-    {{pagination
-      maxPagesInList='10'
-      route='posts.index'
-      recordCount=@model.meta.pagination.total
-      pageSize=@model.meta.pagination.limit
-      pageNumber=@model.meta.pagination.page
-    }}
-  </div>
-  <!-- Post Pagination -->
-
-</div>
-<!-- Content area -->
+<PageContent>
+  {{user-posts posts=@model.data}}
+  {{pagination
+    maxPagesInList='10'
+    route='posts.index'
+    recordCount=@model.meta.pagination.total
+    pageSize=@model.meta.pagination.limit
+    pageNumber=@model.meta.pagination.page
+  }}
+</PageContent>

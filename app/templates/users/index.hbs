@@ -1,12 +1,11 @@
 {{page-title 'Users'}}
 {{page-header heading='Users'}}
-<!-- Content area -->
-<div class='content pt-0'>
+<PageContent>
   {{user-table
     title='All Users'
-    users=@model.data
     route='users.index'
+    headers=@model.headers
+    users=@model.data
     pagination=@model.meta.pagination
   }}
-</div>
-<!-- Content area -->
+</PageContent>

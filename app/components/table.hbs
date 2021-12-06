@@ -1,0 +1,15 @@
+<!-- Table -->
+<table class='table datatable-responsive'>
+  <thead>
+    <tr>
+      {{#each @headers as |header|}}
+        <th>{{header}}</th>
+      {{/each}}
+      <th class='text-center'>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{yield}}
+  </tbody>
+</table>
+<!-- /Table -->
