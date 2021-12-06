@@ -1,13 +1,11 @@
 {{page-title 'Todos'}}
 {{page-header heading='Todos'}}
-<!-- Content area -->
-<div class='content pt-0'>
-
-  <!-- Todos -->
+<PageContent>
   <div class='row'>
-    {{user-todos todos=model}}
+    {{#each @model.data as |todo|}}
+      <div class='col-lg-6'>
+        {{todos todo=todo}}
+      </div>
+    {{/each}}
   </div>
-  <!-- /Todos -->
-
-</div>
-<!-- Content area -->
+</PageContent>

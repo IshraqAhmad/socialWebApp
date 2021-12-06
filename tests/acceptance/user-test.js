@@ -5,7 +5,6 @@ import { setupApplicationTest } from 'ember-qunit';
 module('Acceptance | user', function (hooks) {
   setupApplicationTest(hooks);
 
-
   hooks.beforeEach(async function () {
     const userObject = {
       id: 100,
@@ -39,5 +38,4 @@ module('Acceptance | user', function (hooks) {
   //   assert.strictEqual(currentURL(), '/users/2', 'new user profile is shown');
   //   assert.dom(name).hasText('John Doe', 'user name is shown');
   // });
-
 });

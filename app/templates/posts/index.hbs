@@ -1,13 +1,18 @@
 {{page-title 'Posts'}}
 {{page-header heading='Posts'}}
-<!-- Content area -->
-<div class='content pt-0'>
-
-  <!-- Blog posts -->
+<PageContent>
   <div class='row'>
-    {{user-posts posts=model}}
+    {{#each @model.data as |post|}}
+      <div class='col-lg-6'>
+        {{posts post=post}}
+      </div>
+    {{/each}}
   </div>
-  <!-- Blog posts -->
-
-</div>
-<!-- Content area -->
+  {{pagination
+    maxPagesInList='10'
+    route='posts.index'
+    recordCount=@model.meta.pagination.total
+    pageSize=@model.meta.pagination.limit
+    pageNumber=@model.meta.pagination.page
+  }}
+</PageContent>
