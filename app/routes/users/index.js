@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import environment from 'ember-demo/config/environment';
 
 export default class UsersIndexRoute extends Route {
   headers = ['Username', 'Email', 'Gender', 'Status'];
@@ -11,7 +12,7 @@ export default class UsersIndexRoute extends Route {
 
   async model(params) {
     const response = await fetch(
-      'https://gorest.co.in/public/v1/users?page=' + params.page
+      environment.apiURL + 'users?page=' + params.page
     );
     const result = await response.json();
     result.headers = this.headers;

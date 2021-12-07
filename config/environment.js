@@ -5,6 +5,7 @@ module.exports = function (environment) {
     modulePrefix: 'ember-demo',
     environment,
     rootURL: '/',
+    apiURL: 'https://gorest.co.in/public/v1/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
