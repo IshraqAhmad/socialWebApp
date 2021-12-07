@@ -1,168 +1,136 @@
 {{page-title 'View'}}
 {{page-header heading='Users - View'}}
 {{#page-content}}
-  <!-- Inner container -->
-  <div class='d-lg-flex align-items-lg-start'>
+<!-- Inner container -->
+<div class='d-lg-flex align-items-lg-start'>
 
-    <!-- Left sidebar component -->
-    <div
-      class='sidebar sidebar-light bg-transparent sidebar-component sidebar-component-left wmin-300 border-0 shadow-none sidebar-expand-lg'
-    >
+  <!-- Left sidebar component -->
+  <div
+    class='sidebar sidebar-light bg-transparent sidebar-component sidebar-component-left wmin-300 border-0 shadow-none sidebar-expand-lg'>
 
-      <!-- Sidebar content -->
-      <div class='sidebar-content'>
+    <!-- Sidebar content -->
+    <div class='sidebar-content'>
 
-        <!-- Navigation -->
-        <div class='card'>
-          <div class='card-body text-center'>
-            <div class='card-img-actions d-inline-block mb-3'>
-              <img
-                class='img-fluid rounded-circle'
-                src='/assets/images/placeholders/placeholder.jpg'
-                width='170'
-                height='170'
-                alt=''
-              />
-              <div class='card-img-actions-overlay rounded-circle'>
-                <a
-                  href='#'
-                  class='btn btn-outline-white border-2 btn-icon rounded-pill'
-                >
-                  <i class='icon-plus3'></i>
-                </a>
-                <a
-                  href='#'
-                  class='btn btn-outline-white border-2 btn-icon rounded-pill ml-2'
-                >
-                  <i class='icon-link'></i>
-                </a>
-              </div>
+      <!-- Navigation -->
+      <div class='card'>
+        <div class='card-body text-center'>
+          <div class='card-img-actions d-inline-block mb-3'>
+            <img class='img-fluid rounded-circle' src='/assets/images/placeholders/placeholder.jpg' width='170'
+              height='170' alt='' />
+            <div class='card-img-actions-overlay rounded-circle'>
+              <a href='#' class='btn btn-outline-white border-2 btn-icon rounded-pill'>
+                <i class='icon-plus3'></i>
+              </a>
+              <a href='#' class='btn btn-outline-white border-2 btn-icon rounded-pill ml-2'>
+                <i class='icon-link'></i>
+              </a>
             </div>
-
-            <h6 class='font-weight-semibold mb-0'>{{@model.user.name}}</h6>
           </div>
 
-          <ul class='nav nav-sidebar'>
-            <li class='nav-item'>
-              <a href='#profile' class='nav-link active' data-toggle='tab'>
-                <i class='icon-user'></i>
-                My profile
-              </a>
-            </li>
-            <li class='nav-item'>
-              <a href='#inbox' class='nav-link' data-toggle='tab'>
-                <i class='icon-comments'></i>
-                Posts
-              </a>
-            </li>
-            <li class='nav-item'>
-              <a href='#orders' class='nav-link' data-toggle='tab'>
-                <i class='icon-list2'></i>
-                Todo
-              </a>
-            </li>
-            <li class='nav-item-divider'></li>
-            <li class='nav-item'>
-              <a href='/' class='nav-link' data-toggle='tab'>
-                <i class='icon-switch2'></i>
-                Logout
-              </a>
-            </li>
-          </ul>
+          <h6 class='font-weight-semibold mb-0'>{{@model.user.name}}</h6>
         </div>
-        <!-- /navigation -->
 
+        <ul class='nav nav-sidebar'>
+          <li class='nav-item'>
+            <a href='#profile' class='nav-link active' data-toggle='tab'>
+              <i class='icon-user'></i>
+              My profile
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a href='#inbox' class='nav-link' data-toggle='tab'>
+              <i class='icon-comments'></i>
+              Posts
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a href='#orders' class='nav-link' data-toggle='tab'>
+              <i class='icon-list2'></i>
+              Todo
+            </a>
+          </li>
+          <li class='nav-item-divider'></li>
+          <li class='nav-item'>
+            <a href='/' class='nav-link' data-toggle='tab'>
+              <i class='icon-switch2'></i>
+              Logout
+            </a>
+          </li>
+        </ul>
       </div>
-      <!-- /sidebar content -->
+      <!-- /navigation -->
 
     </div>
-    <!-- /Left sidebar component -->
-
-    <!-- Right content -->
-    <div class='tab-content flex-1'>
-      <div class='tab-pane fade active show' id='profile'>
-        <!-- Profile info -->
-
-{{#user-info title='User Profile'}}
-      {{#form}}
-            <div class='col-lg-6'>
-              <label>Name</label>
-              <input
-                type='text'
-                value={{@model.user.name}}
-                class='form-control'
-                readonly
-              />
-            </div>
-
-            <div class='col-lg-6'>
-              <label>Email</label>
-              <input
-                type='text'
-                value={{@model.user.email}}
-                class='form-control'
-                readonly
-              />
-            </div>
-
-            <div class='col-lg-6'>
-              <label>Gender</label>
-              <input
-                type='text'
-                value={{@model.user.gender}}
-                class='form-control'
-                readonly
-              />
-            </div>
-
-            <div class='col-lg-6'>
-              <label>Status</label>
-              <input
-                type='text'
-                value={{@model.user.status}}
-                class='form-control'
-                readonly
-              />
-            </div>
-  {{/form}}
-  {{/user-info}}
-      </div>
-
-      <div class='tab-pane fade' id='inbox'>
-        <!-- User Posts -->
-        <div class='row'>
-          {{#if @model.todos}}
-            {{#each @model.posts as |post|}}
-              <div class='col-lg-6'>
-                {{posts post=post}}
-              </div>
-            {{/each}}
-          {{else}}
-            {{no-data-overlay message='No posts are here... yet.'}}
-          {{/if}}
-        </div>
-        <!-- /User Posts -->
-      </div>
-
-      <div class='tab-pane fade' id='orders'>
-        <!-- User Todo -->
-        <div class='row'>
-          {{#if @model.todos}}
-            {{#each @model.todos as |todo|}}
-              <div class='col-lg-6'>
-                {{todos todo=todo}}
-              </div>
-            {{/each}}
-          {{else}}
-            {{no-data-overlay message='No todos are here... yet.'}}
-          {{/if}}
-        </div>
-        <!-- /User Todo -->
-      </div>
-
-    </div>
-    <!-- /Right content -->
+    <!-- /sidebar content -->
 
   </div>
-  <!-- /Inner container -->
+  <!-- /Left sidebar component -->
+
+  <!-- Right content -->
+  <div class='tab-content flex-1'>
+    <div class='tab-pane fade active show' id='profile'>
+      <!-- Profile info -->
+
+      {{#user-info title='User Profile'}}
+      {{#form}}
+      <div class='col-lg-6'>
+        <label>Name</label>
+        <input type='text' value={{@model.user.name}} class='form-control' readonly />
+      </div>
+
+      <div class='col-lg-6'>
+        <label>Email</label>
+        <input type='text' value={{@model.user.email}} class='form-control' readonly />
+      </div>
+
+      <div class='col-lg-6'>
+        <label>Gender</label>
+        <input type='text' value={{@model.user.gender}} class='form-control' readonly />
+      </div>
+
+      <div class='col-lg-6'>
+        <label>Status</label>
+        <input type='text' value={{@model.user.status}} class='form-control' readonly />
+      </div>
+      {{/form}}
+      {{/user-info}}
+    </div>
+
+    <div class='tab-pane fade' id='inbox'>
+      <!-- User Posts -->
+      <div class='row'>
+        {{#if @model.todos}}
+        {{#each @model.posts as |post|}}
+        <div class='col-lg-6'>
+          {{posts post=post}}
+        </div>
+        {{/each}}
+        {{else}}
+        {{no-data-overlay message='No posts are here... yet.'}}
+        {{/if}}
+      </div>
+      <!-- /User Posts -->
+    </div>
+
+    <div class='tab-pane fade' id='orders'>
+      <!-- User Todo -->
+      <div class='row'>
+        {{#if @model.todos}}
+        {{#each @model.todos as |todo|}}
+        <div class='col-lg-6'>
+          {{todos todo=todo}}
+        </div>
+        {{/each}}
+        {{else}}
+        {{no-data-overlay message='No todos are here... yet.'}}
+        {{/if}}
+      </div>
+      <!-- /User Todo -->
+    </div>
+
+  </div>
+  <!-- /Right content -->
+
+</div>
+<!-- /Inner container -->
 {{/page-content}}

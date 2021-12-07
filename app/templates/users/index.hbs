@@ -1,22 +1,22 @@
 {{page-title 'Users'}}
 {{page-header heading='Users'}}
 {{#page-content}}
-  {{#card-table title='All Users'}}
-    {{#if @model.data}}
-      {{#table headers=@model.headers}}
-        {{#each @model.data as |user|}}
-          {{users/user-row user=user}}
-        {{/each}}
-      {{/table}}
-    {{else}}
-      {{no-data-overlay message='No users are here... yet.'}}
-    {{/if}}
-    {{pagination
-      maxPagesInList='10'
-      route='users.index'
-      recordCount=@model.meta.pagination.total
-      pageSize=@model.meta.pagination.limit
-      pageNumber=@model.meta.pagination.page
-    }}
-  {{/card-table}}
+{{#card-table title='All Users'}}
+{{#if @model.data}}
+{{#table headers=@model.headers}}
+{{#each @model.data as |user|}}
+{{users/user-row user=user}}
+{{/each}}
+{{/table}}
+{{else}}
+{{no-data-overlay message='No users are here... yet.'}}
+{{/if}}
+{{pagination
+maxPagesInList='10'
+route='users.index'
+recordCount=@model.meta.pagination.total
+pageSize=@model.meta.pagination.limit
+pageNumber=@model.meta.pagination.page
+}}
+{{/card-table}}
 {{/page-content}}
