@@ -1,15 +1,10 @@
 {{page-title 'Edit'}}
 {{page-header heading='Users - Edit'}}
-<PageContent>
-  <ValidatedForm
-    @model={{changeset this.model this.UserValidations}}
-    @on-submit={{action 'submit'}}
-    @submit-label='Save'
-    as |f|
-  >
-
-    {{f.input label='Name' name='name'}}
-    {{f.input label='Email' name='email'}}
-    {{f.submit label='Save'}}
-  </ValidatedForm>
-</PageContent>
+<!-- Centered forms -->
+{{#user-info title='Edit User'}}
+{{#form}}
+{{users/user-form user=@model}}
+{{/form}}
+{{#button button="Submit"}}{{/button}}
+{{/user-info}}
+<!-- /Centered forms -->
