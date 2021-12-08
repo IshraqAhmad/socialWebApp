@@ -1,4 +1,16 @@
+ {{!-- <ValidatedForm
 
+  @model={{changeset this.model this.PostValidations}}
+    @on-submit={{action 'submit'}}
+    @submit-label='Save'
+    as |f|
+  >
+
+    {{f.input label='Title' name='title'}}
+    {{f.input label='Message' name='body'}}
+    {{f.submit label='Save'}}
+
+    </ValidatedForm> --}}
       <form action='#' class='form-horizontal'>
         <div class='modal-body'>
           <div class='form-group row'>
@@ -36,4 +48,6 @@
           <button type='submit' class='btn btn-primary'>Create</button>
         </div>
       </form>
+
+        
 {{yield}}
