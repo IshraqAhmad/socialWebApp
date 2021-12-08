@@ -68,55 +68,22 @@
 
   <!-- Right content -->
   <div class='tab-content flex-1'>
+    
     <div class='tab-pane fade active show' id='profile'>
       <!-- Profile info -->
-
       {{#user-info title='User Profile'}}
       {{#form}}
-      <div class='col-lg-6'>
-        <label>Name</label>
-        <input type='text' value={{@model.user.name}} class='form-control' readonly />
-      </div>
-
-      <div class='col-lg-6'>
-        <label>Email</label>
-        <input type='text' value={{@model.user.email}} class='form-control' readonly />
-      </div>
-
-      <div class='col-lg-6'>
-        <label>Gender</label>
-        <input type='text' value={{@model.user.gender}} class='form-control' readonly />
-      </div>
-
-      <div class='col-lg-6'>
-        <label>Status</label>
-        <input type='text' value={{@model.user.status}} class='form-control' readonly />
-          </div>
-             {{/form}}
+      {{users/view-user user=@model.user}}
+      {{/form}}
       {{/user-info}}
-  </div>
-  
-      <div class='tab-pane fade' id='inbox'>
-        <!-- User Posts -->
-        <div class='row'>
-          {{#if @model.posts}}
-            {{#each @model.posts as |post|}}
-              <div class='col-lg-6'>
-                {{posts post=post}}
-              </div>
-            {{/each}}
-          {{else}}
-            {{no-data-overlay message='No posts are here... yet.'}}
-          {{/if}}
-        </div>
-        <!-- /User Posts -->
-      </div>
- 
+    </div>
 
     <div class='tab-pane fade' id='inbox'>
       <!-- User Posts -->
+    <button type="button" class="btn btn-light" data-toggle="modal" 
+										data-target="#modal_form_horizontal">Launch <i class="icon-play3 ml-2"></i></button>
       <div class='row'>
-        {{#if @model.todos}}
+        {{#if @model.posts}}
         {{#each @model.posts as |post|}}
         <div class='col-lg-6'>
           {{posts post=post}}
@@ -126,8 +93,8 @@
         {{no-data-overlay message='No posts are here... yet.'}}
         {{/if}}
       </div>
-      <!-- /User Posts -->
     </div>
+ {{post/add-post }}
 
     <div class='tab-pane fade' id='orders'>
       <!-- User Todo -->
@@ -142,7 +109,6 @@
         {{no-data-overlay message='No todos are here... yet.'}}
         {{/if}}
       </div>
-      <!-- /User Todo -->
     </div>
 
   </div>
