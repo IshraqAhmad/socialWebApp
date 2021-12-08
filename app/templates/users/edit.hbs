@@ -1,10 +1,10 @@
 {{page-title 'Edit'}}
 {{page-header heading='Users - Edit'}}
 <!-- Centered forms -->
-{{#user-info title='Edit User'}}
-{{#form}}
+<UserInfo @title="Edit User">
+<Form>
 {{users/user-form user=@model}}
-{{/form}}
-{{#button button="Submit"}}{{/button}}
-{{/user-info}}
+</Form>
+<Button @button="Submit"></Button>
+</UserInfo>
 <!-- /Centered forms -->

@@ -6,4 +6,8 @@ export default class PostsComponent extends Component {
   onOpen() {
     this.args.setPost(this.args.post);
   }
+
+  onOpenComment() {
+    this.args.setComment(this.args.comment);
+  }
 }
