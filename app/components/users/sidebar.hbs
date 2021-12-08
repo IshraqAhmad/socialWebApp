@@ -1,0 +1,60 @@
+  <div
+    class='sidebar sidebar-light bg-transparent sidebar-component sidebar-component-left wmin-300 border-0 shadow-none sidebar-expand-lg'>
+
+    <!-- Sidebar content -->
+    <div class='sidebar-content'>
+
+      <!-- Navigation -->
+      <div class='card'>
+        <div class='card-body text-center'>
+          <div class='card-img-actions d-inline-block mb-3'>
+            <img class='img-fluid rounded-circle' src='/assets/images/placeholders/placeholder.jpg' width='170'
+              height='170' alt='' />
+            <div class='card-img-actions-overlay rounded-circle'>
+              <a href='#' class='btn btn-outline-white border-2 btn-icon rounded-pill'>
+                <i class='icon-plus3'></i>
+              </a>
+              <a href='#' class='btn btn-outline-white border-2 btn-icon rounded-pill ml-2'>
+                <i class='icon-link'></i>
+              </a>
+            </div>
+          </div>
+
+          <h6 class='font-weight-semibold mb-0'>{{@model.user.name}}</h6>
+        </div>
+
+        <ul class='nav nav-sidebar'>
+          <li class='nav-item'>
+            <a href='#profile' class='nav-link active' data-toggle='tab'>
+              <i class='icon-user'></i>
+              My profile
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a href='#inbox' class='nav-link' data-toggle='tab'>
+              <i class='icon-comments'></i>
+              Posts
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a href='#orders' class='nav-link' data-toggle='tab'>
+              <i class='icon-list2'></i>
+              Todo
+            </a>
+          </li>
+          <li class='nav-item-divider'></li>
+          <li class='nav-item'>
+            <a href='/' class='nav-link' data-toggle='tab'>
+              <i class='icon-switch2'></i>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- /navigation -->
+
+    </div>
+    <!-- /sidebar content -->
+
+  </div>
+{{yield}}

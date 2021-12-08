@@ -1,158 +1,68 @@
 {{page-title 'View'}}
 {{page-header heading='Users - View'}}
-<PageContent>
-  <!-- Inner container -->
-  <div class='d-lg-flex align-items-lg-start'>
+{{#page-content}}
 
-    <!-- Left sidebar component -->
-    <div
-      class='sidebar sidebar-light bg-transparent sidebar-component sidebar-component-left wmin-300 border-0 shadow-none sidebar-expand-lg'
-    >
+<div class='d-lg-flex align-items-lg-start'>
 
-      <!-- Sidebar content -->
-      <div class='sidebar-content'>
+  <!-- Left sidebar component -->
+{{users/sidebar}}
+  <!-- /Left sidebar component -->
 
-        <!-- Navigation -->
-        <div class='card'>
-          <div class='card-body text-center'>
-            <div class='card-img-actions d-inline-block mb-3'>
-              <img
-                class='img-fluid rounded-circle'
-                src='/assets/images/placeholders/placeholder.jpg'
-                width='170'
-                height='170'
-                alt=''
-              />
-              <div class='card-img-actions-overlay rounded-circle'>
-                <a
-                  href='#'
-                  class='btn btn-outline-white border-2 btn-icon rounded-pill'
-                >
-                  <i class='icon-plus3'></i>
-                </a>
-                <a
-                  href='#'
-                  class='btn btn-outline-white border-2 btn-icon rounded-pill ml-2'
-                >
-                  <i class='icon-link'></i>
-                </a>
-              </div>
-            </div>
+  <div class='tab-content flex-1'>
 
-            <h6 class='font-weight-semibold mb-0'>{{@model.user.name}}</h6>
-          </div>
-
-          <ul class='nav nav-sidebar'>
-            <li class='nav-item'>
-              <a href='#profile' class='nav-link active' data-toggle='tab'>
-                <i class='icon-user'></i>
-                My profile
-              </a>
-            </li>
-            <li class='nav-item'>
-              <a href='#inbox' class='nav-link' data-toggle='tab'>
-                <i class='icon-comments'></i>
-                Posts
-              </a>
-            </li>
-            <li class='nav-item'>
-              <a href='#orders' class='nav-link' data-toggle='tab'>
-                <i class='icon-list2'></i>
-                Todo
-              </a>
-            </li>
-            <li class='nav-item-divider'></li>
-            <li class='nav-item'>
-              <a href='/' class='nav-link' data-toggle='tab'>
-                <i class='icon-switch2'></i>
-                Logout
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!-- /navigation -->
-
-      </div>
-      <!-- /sidebar content -->
-
+    <div class='tab-pane fade active show' id='profile'>
+      {{#user-info title='User Profile'}}
+      {{#form}}
+      {{users/view-user user=@model.user}}
+      {{/form}}
+      {{/user-info}}
     </div>
-    <!-- /Left sidebar component -->
 
-    <!-- Right content -->
-    <div class='tab-content flex-1'>
-
-      <div class='tab-pane fade active show' id='profile'>
-        <!-- Profile info -->
-        <UserInfo @title='User Profile'>
-          <Form>
-            {{users/view-user user=@model.user}}
-          </Form>
-        </UserInfo>
-      </div>
-
-      <div class='tab-pane fade' id='inbox'>
-        <!-- User Posts -->
-        <button
-          type='button'
-          class='btn btn-light'
-          data-toggle='modal'
-          data-target='#post_create'
-        >Add Post</button>
-        <hr />
-        <div class='row'>
-          {{#if @model.posts}}
-            {{#each @model.posts as |post|}}
-              <div class='col-lg-6'>
-                {{posts post=post setPost=this.setPost}}
-              </div>
-            {{/each}}
-            <ModalDialog @modalId='post_edit' @modalTitle='View Post'>
-              {{!-- <h3>{{this.post.title}}</h3>
-              <p>{{this.post.body}}</p> --}}
-              {{post/add-post post=this.post}}
-            </ModalDialog>
-          {{else}}
-            {{no-data-overlay message='No posts are here... yet.'}}
-          {{/if}}
+    <div class='tab-pane fade' id='inbox'>
+      {{#modal-button modaltarget= '#post_create' modalbutton='Add Post'}} {{/modal-button}}
+      <hr />
+      <div class='row'>
+        {{#if @model.posts}}
+        {{#each @model.posts as |post|}}
+        <div class='col-lg-6'>
+          {{posts post=post setPost=this.setPost}}
         </div>
-        <ModalDialog @modalId='post_create' @modalTitle='Create Post'>
-          {{post/add-post}}
-        </ModalDialog>
+        {{/each}}
+        {{#modal-dialog modalId='post_edit' modalTitle='View Post'}}
+        {{post/add-post post=this.post}}
+        {{/modal-dialog}}
+        {{else}}
+        {{no-data-overlay message='No posts are here... yet.'}}
+        {{/if}}
       </div>
-
-      <div class='tab-pane fade' id='orders'>
-        <!-- User Todo -->
-        <button
-          type='button'
-          class='btn btn-light'
-          data-toggle='modal'
-          data-target='#todo_create'
-        >Add Todos</button>
-        <hr />
-        <div class='row'>
-          {{#if @model.todos}}
-            {{#each @model.todos as |todo|}}
-              <div class='col-lg-6'>
-                {{todos todo=todo setTodo=this.setTodo}}
-              </div>
-            {{/each}}
-            <ModalDialog @modalId='todo_edit' @modalTitle='View Todo'>
-              <h3>{{this.todo.status}}</h3>
-              <p>{{this.todo.title}}</p>
-              {{todo/add-todo todo=this.todo}}
-            </ModalDialog>
-          {{else}}
-            {{no-data-overlay message='No todos are here... yet.'}}
-          {{/if}}
-        </div>
-        <ModalDialog @modalId='todo_create' @modalTitle='Create Todo'>
-          {{todo/add-todo}}
-        </ModalDialog>
-      </div>
-
+      {{#modal-dialog modalId='post_create' modalTitle='Create Post'}}
+      {{post/add-post}}
+      {{/modal-dialog}}
     </div>
-    <!-- /Right content -->
+
+    <div class='tab-pane fade' id='orders'>
+      {{#modal-button modaltarget= '#todo_create' modalbutton='Add Todos'}} {{/modal-button}}
+      <hr />
+      <div class='row'>
+        {{#if @model.todos}}
+        {{#each @model.todos as |todo|}}
+        <div class='col-lg-6'>
+          {{todos todo=todo setTodo=this.setTodo}}
+        </div>
+        {{/each}}
+        {{#modal-dialog modalId='todo_edit' modalTitle='View Todo'}}
+        {{todo/add-todo todo=this.todo}}
+        {{/modal-dialog}}
+        {{else}}
+        {{no-data-overlay message='No todos are here... yet.'}}
+        {{/if}}
+      </div>
+      {{#modal-dialog modalId='todo_create' modalTitle='Create Todo'}}
+      {{todo/add-todo}}
+      {{/modal-dialog}}
+    </div>
 
   </div>
-  <!-- /Inner container -->
-</PageContent>
+
+</div>
+{{/page-content}}
