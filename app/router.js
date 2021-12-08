@@ -13,7 +13,6 @@ Router.map(function () {
     this.route('edit', { path: '/edit/:userid' });
   });
   this.route('posts', function () {
-    this.route('add');
     this.route('view');
   });
   this.route('todo', function () {
