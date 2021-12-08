@@ -107,14 +107,17 @@
               </div>
             {{/each}}
             <ModalDialog @modalId='post_edit' @modalTitle='View Post'>
-              <h3>{{this.post.title}}</h3>
-              <p>{{this.post.body}}</p>
+              {{!-- <h3>{{this.post.title}}</h3>
+              <p>{{this.post.body}}</p> --}}
+              {{post/add-post post=this.post}}
             </ModalDialog>
           {{else}}
             {{no-data-overlay message='No posts are here... yet.'}}
           {{/if}}
         </div>
-        <ModalDialog @modalId='post_create' @modalTitle='Create Post' />
+        <ModalDialog @modalId='post_create' @modalTitle='Create Post' >
+           {{post/add-post}}
+        </ModalDialog>
       </div>
 
       <div class='tab-pane fade' id='orders'>
