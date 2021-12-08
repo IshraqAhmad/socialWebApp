@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 export default class UsersViewController extends Controller {
   @tracked post = null;
   @tracked todo = null;
+  @tracked comment = null;
 
   @action
   setPost(post) {
@@ -13,5 +14,9 @@ export default class UsersViewController extends Controller {
   @action
   setTodo(todo) {
     this.todo = todo;
+  }
+  @action
+  setComment(comment) {
+    this.comment = comment;
   }
 }

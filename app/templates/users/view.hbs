@@ -20,6 +20,7 @@
 
     <div class='tab-pane fade' id='inbox'>
       {{#modal-button modaltarget= '#post_create' modalbutton='Add Post'}} {{/modal-button}}
+      {{#modal-button modaltarget= '#comment_create' modalbutton='Add Comment'}} {{/modal-button}}
       <hr />
       <div class='row'>
         {{#if @model.posts}}
@@ -37,6 +38,9 @@
       </div>
       {{#modal-dialog modalId='post_create' modalTitle='Create Post'}}
       {{post/add-post}}
+      {{/modal-dialog}}
+       {{#modal-dialog modalId='comment_create' modalTitle='View All Comments'}}
+      {{comment/view-comments}}
       {{/modal-dialog}}
     </div>
 
