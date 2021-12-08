@@ -1,29 +1,15 @@
 {{page-title 'Edit'}}
 {{page-header heading='Users - Edit'}}
-<!-- Centered forms -->
-            <UserInfo>
-              {{!-- <h6 class='card-title'>Profile information</h6> --}}
-              <Form>
-                <div class='col-lg-6'>
-                  <label>Enter your Name:</label>
-                  <input type='text' class='form-control' value={{model.name}} />
-                </div>
-                <div class='col-lg-6'>
-                  <label>Enter your Email</label>
-                  <input type='email' class='form-control' value={{model.email}} />
-                </div>
-                <div class='col-lg-6'>
-                  <label>Enter your Gender</label>
-                  <input type='text' class='form-control' value={{model.gender}} />
-                </div>
-                <div class='col-lg-6'>
-                  <label>Enter your Status</label>
-                  <input type='text' class='form-control' value={{model.status}} />
-                </div>
-              </Form>
-              <div class='text-right'>
-                <button type='submit' class='btn btn-primary'>Submit form
-                  <i class='icon-paperplane ml-2'></i></button>
-              </div>
-            </UserInfo>
-<!-- /Centered forms -->
+{{#page-content}}
+  <ValidatedForm
+    @model={{changeset this.model this.UserValidations}}
+    @on-submit={{action 'submit'}}
+    @submit-label='Save'
+    as |f|
+  >
+
+    {{f.input label='Name' name='name'}}
+    {{f.input label='Email' name='email'}}
+    {{f.submit label='Save'}}
+  </ValidatedForm>
+{{/page-content}}
