@@ -34,5 +34,11 @@
 
 
         </ul>
+
+        {{#modal-button modaltarget= '#add_comment' modalbutton='Add Comment'}} {{/modal-button}}
         </div>
+
+         {{#modal-dialog modalId='add_comment' modalTitle='Add a Comment'}}
+      {{comment/add-comment}}
+      {{/modal-dialog}}
 {{yield}}
