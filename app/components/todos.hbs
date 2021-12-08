@@ -2,31 +2,30 @@
 
 <div class='card'>
   <a
-      href='#'
-      {{!-- class='btn btn-link p-0 mt-2 mt-sm-0' --}}
-      data-toggle='modal'
-      data-target='#todo_edit'
-      {{on 'click' this.onOpen}}
-    >
-  <div class='card-body'>
-    <div class='d-flex flex-wrap justify-content-between mb-2'>
-      <span
-        class='font-size-xs line-height-xs text-uppercase text-muted font-weight-semibold'
-      >{{moment-from-now @todo.due_on}}</span>
-      {{#if (eq @todo.status 'completed')}}
+    href='#'
+    data-toggle='modal'
+    data-target='#todo_edit'
+    {{on 'click' this.onOpen}}
+  >
+    <div class='card-body'>
+      <div class='d-flex flex-wrap justify-content-between mb-2'>
         <span
-          class='font-size-xs line-height-xs text-uppercase text-success font-weight-semibold'
-        >{{@todo.status}}</span>
-      {{else}}
-        <span
-          class='font-size-xs line-height-xs text-uppercase text-warning font-weight-semibold'
-        >{{@todo.status}}</span>
-      {{/if}}
+          class='font-size-xs line-height-xs text-uppercase text-muted font-weight-semibold'
+        >{{moment-from-now @todo.due_on}}</span>
+        {{#if (eq @todo.status 'completed')}}
+          <span
+            class='font-size-xs line-height-xs text-uppercase text-success font-weight-semibold'
+          >{{@todo.status}}</span>
+        {{else}}
+          <span
+            class='font-size-xs line-height-xs text-uppercase text-warning font-weight-semibold'
+          >{{@todo.status}}</span>
+        {{/if}}
+      </div>
+      <h6 class='pt-1'>
+        {{@todo.title}}
+      </h6>
     </div>
-    <h6 class='pt-1'>
-      {{@todo.title}}
-    </h6>
-  </div>
   </a>
 </div>
 

@@ -115,8 +115,8 @@
             {{no-data-overlay message='No posts are here... yet.'}}
           {{/if}}
         </div>
-        <ModalDialog @modalId='post_create' @modalTitle='Create Post' >
-           {{post/add-post}}
+        <ModalDialog @modalId='post_create' @modalTitle='Create Post'>
+          {{post/add-post}}
         </ModalDialog>
       </div>
 
@@ -133,10 +133,10 @@
           {{#if @model.todos}}
             {{#each @model.todos as |todo|}}
               <div class='col-lg-6'>
-                {{todos todo=todo}}
+                {{todos todo=todo setTodo=this.setTodo}}
               </div>
             {{/each}}
-             <ModalDialog @modalId='todo_edit' @modalTitle='View Todo'>
+            <ModalDialog @modalId='todo_edit' @modalTitle='View Todo'>
               <h3>{{this.todo.status}}</h3>
               <p>{{this.todo.title}}</p>
               {{todo/add-todo todo=this.todo}}
@@ -145,8 +145,8 @@
             {{no-data-overlay message='No todos are here... yet.'}}
           {{/if}}
         </div>
-        <ModalDialog @modalId='todo_create' @modalTitle='Create Todo' >
-           {{todo/add-todo}}
+        <ModalDialog @modalId='todo_create' @modalTitle='Create Todo'>
+          {{todo/add-todo}}
         </ModalDialog>
       </div>
 
