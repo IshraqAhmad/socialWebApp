@@ -1,13 +1,13 @@
 {{page-title 'Users'}}
 {{page-header heading='Users'}}
-<PageContent>
-  <CardTable @title="All Users">
+{{#page-content}}
+  {{#card-table title='All Users'}}
     {{#if @model.data}}
-      <Table @headers={{@model.headers}}>
+      {{#table headers=@model.headers}}
         {{#each @model.data as |user|}}
           {{users/user-row user=user}}
         {{/each}}
-      </Table>
+      {{/table}}
     {{else}}
       {{no-data-overlay message='No users are here... yet.'}}
     {{/if}}
@@ -18,5 +18,5 @@
       pageSize=@model.meta.pagination.limit
       pageNumber=@model.meta.pagination.page
     }}
-  </CardTable>
-</PageContent>
+  {{/card-table}}
+{{/page-content}}

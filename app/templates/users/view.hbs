@@ -1,6 +1,6 @@
 {{page-title 'View'}}
 {{page-header heading='Users - View'}}
-<PageContent>
+{{#page-content}}
   <!-- Inner container -->
   <div class='d-lg-flex align-items-lg-start'>
 
@@ -83,8 +83,8 @@
       <div class='tab-pane fade active show' id='profile'>
         <!-- Profile info -->
 
-        <UserInfo>
-          <Form>
+        {{#user-info title='User Profile'}}
+          {{#form}}
             <div class='col-lg-6'>
               <label>Name</label>
               <input
@@ -124,14 +124,30 @@
                 readonly
               />
             </div>
-          </Form>
-        </UserInfo>
+          {{/form}}
+        {{/user-info}}
       </div>
 
       <div class='tab-pane fade' id='inbox'>
         <!-- User Posts -->
         <div class='row'>
           {{#if @model.posts}}
+            {{#each @model.posts as |post|}}
+              <div class='col-lg-6'>
+                {{posts post=post}}
+              </div>
+            {{/each}}
+          {{else}}
+            {{no-data-overlay message='No posts are here... yet.'}}
+          {{/if}}
+        </div>
+        <!-- /User Posts -->
+      </div>
+
+      <div class='tab-pane fade' id='inbox'>
+        <!-- User Posts -->
+        <div class='row'>
+          {{#if @model.todos}}
             {{#each @model.posts as |post|}}
               <div class='col-lg-6'>
                 {{posts post=post}}
@@ -161,8 +177,6 @@
       </div>
 
     </div>
-    <!-- /Right content -->
-
   </div>
   <!-- /Inner container -->
-</PageContent>
+{{/page-content}}
