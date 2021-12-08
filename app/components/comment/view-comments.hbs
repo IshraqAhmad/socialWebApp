@@ -1,46 +1,58 @@
-<div class="m-5">
-        <ul class="media-list">
-            <li class="media">
-                <div class="mr-3 position-relative">
-                    <img src="/assets/images/placeholders/placeholder.jpg" class="rounded-circle"
-                        width="36" jeight="36" alt="">
-                </div>
+<div class='m-5'>
+  <ul class='media-list'>
+    <li class='media'>
+      <div class='mr-3 position-relative'>
+        <img
+          src='/assets/images/placeholders/placeholder.jpg'
+          class='rounded-circle'
+          width='36'
+          jeight='36'
+          alt=''
+        />
+      </div>
 
-                <div class="media-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="media-title"><a href="#">James Alexander</a></div>
-                        <span class="font-size-sm text-muted">14:58</span>
-                    </div>
-
-                    Who knows, maybe that would be the best thing for me...
-                </div>
-            </li>
-   <hr />
-            <li class="media">
-                <div class="mr-3 position-relative">
-                    <img src="/assets/images/placeholders/placeholder.jpg" class="rounded-circle"
-                        width="36" jeight="36" alt="">
-                </div>
-
-                <div class="media-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="media-title"><a href="#">Margo Baker</a></div>
-                        <span class="font-size-sm text-muted">12:16</span>
-                    </div>
-
-                    That was something he was unable to do because...
-                </div>
-            </li>
-
-
-        </ul>
-<div class="mt-3">
-    {{#modal-button modaltarget= '#add_comment' modalbutton='Add Comment'}} {{/modal-button}}
-</div>
-        
+      <div class='media-body'>
+        <div class='d-flex justify-content-between'>
+          <div class='media-title'><a href='#'>James Alexander</a></div>
+          <span class='font-size-sm text-muted'>14:58</span>
         </div>
 
-         {{#modal-dialog modalId='add_comment' modalTitle='Add a Comment'}}
-      {{comment/add-comment}}
-      {{/modal-dialog}}
+        Who knows, maybe that would be the best thing for me...
+      </div>
+    </li>
+    <hr />
+    <li class='media'>
+      <div class='mr-3 position-relative'>
+        <img
+          src='/assets/images/placeholders/placeholder.jpg'
+          class='rounded-circle'
+          width='36'
+          jeight='36'
+          alt=''
+        />
+      </div>
+
+      <div class='media-body'>
+        <div class='d-flex justify-content-between'>
+          <div class='media-title'><a href='#'>Margo Baker</a></div>
+          <span class='font-size-sm text-muted'>12:16</span>
+        </div>
+
+        That was something he was unable to do because...
+      </div>
+    </li>
+
+  </ul>
+
+  <div class='mt-3'>
+    {{#modal-button
+      modaltarget='#add_comment'
+      modalbutton='Add Comment'
+    }}{{/modal-button}}
+  </div>
+</div>
+
+{{#modal-dialog modalId='add_comment' modalTitle='Add a Comment'}}
+  {{comment/add-comment}}
+{{/modal-dialog}}
 {{yield}}

@@ -2,71 +2,86 @@
 {{page-header heading='Users - View'}}
 {{#page-content}}
 
-<div class='d-lg-flex align-items-lg-start'>
+  <div class='d-lg-flex align-items-lg-start'>
 
-  <!-- Left sidebar component -->
-{{users/sidebar}}
-  <!-- /Left sidebar component -->
+    <!-- Left sidebar component -->
+    {{users/sidebar}}
+    <!-- /Left sidebar component -->
 
-  <div class='tab-content flex-1'>
+    <div class='tab-content flex-1'>
 
-    <div class='tab-pane fade active show' id='profile'>
-      {{#user-info title='User Profile'}}
-      {{#form}}
-      {{users/view-user user=@model.user}}
-      {{/form}}
-      {{/user-info}}
-    </div>
-
-    <div class='tab-pane fade' id='inbox'>
-      {{#modal-button modaltarget= '#post_create' modalbutton='Add Post'}} {{/modal-button}}
-      {{#modal-button modaltarget= '#comment_create' modalbutton='View Comment'}} {{/modal-button}}
-      <hr />
-      <div class='row'>
-        {{#if @model.posts}}
-        {{#each @model.posts as |post|}}
-        <div class='col-lg-6'>
-          {{posts post=post setPost=this.setPost}}
-        </div>
-        {{/each}}
-        {{#modal-dialog modalId='post_edit' modalTitle='View Post'}}
-        {{post/add-post post=this.post}}
-        {{/modal-dialog}}
-        {{else}}
-        {{no-data-overlay message='No posts are here... yet.'}}
-        {{/if}}
+      <div class='tab-pane fade active show' id='profile'>
+        {{#user-info title='User Profile'}}
+          {{#form}}
+            {{users/view-user user=@model.user}}
+          {{/form}}
+        {{/user-info}}
       </div>
-      {{#modal-dialog modalId='post_create' modalTitle='Create Post'}}
-      {{post/add-post}}
-      {{/modal-dialog}}
-       {{#modal-dialog modalId='comment_create' modalTitle='View All Comments'}}
-      {{comment/view-comments}}
-      {{/modal-dialog}}
-    </div>
 
-    <div class='tab-pane fade' id='orders'>
-      {{#modal-button modaltarget= '#todo_create' modalbutton='Add Todos'}} {{/modal-button}}
-      <hr />
-      <div class='row'>
-        {{#if @model.todos}}
-        {{#each @model.todos as |todo|}}
-        <div class='col-lg-6'>
-          {{todos todo=todo setTodo=this.setTodo}}
-        </div>
-        {{/each}}
-        {{#modal-dialog modalId='todo_edit' modalTitle='View Todo'}}
-        {{todo/add-todo todo=this.todo}}
+      <div class='tab-pane fade' id='inbox'>
+
+        {{#modal-button
+          modaltarget='#post_create'
+          modalbutton='Add Post'
+        }}{{/modal-button}}
+        {{#modal-dialog modalId='post_create' modalTitle='Create Post'}}
+          {{post/add-post}}
         {{/modal-dialog}}
-        {{else}}
-        {{no-data-overlay message='No todos are here... yet.'}}
-        {{/if}}
+        <hr />
+
+        <div class='row'>
+
+          {{#if @model.posts}}
+
+            {{#each @model.posts as |post|}}
+              <div class='col-lg-6'>
+                {{posts post=post setPost=this.setPost comments=this.comments}}
+              </div>
+            {{/each}}
+
+            {{#modal-dialog modalId='post_edit' modalTitle='View Post'}}
+              {{post/add-post post=this.post}}
+            {{/modal-dialog}}
+
+            {{#modal-dialog modalId='post_comments' modalTitle='Post Comments'}}
+              {{comment/view-comments
+                comments=this.comments
+                setPost=this.setPost
+              }}
+            {{/modal-dialog}}
+
+          {{else}}
+            {{no-data-overlay message='No posts are here... yet.'}}
+          {{/if}}
+        </div>
       </div>
-      {{#modal-dialog modalId='todo_create' modalTitle='Create Todo'}}
-      {{todo/add-todo}}
-      {{/modal-dialog}}
+
+      <div class='tab-pane fade' id='orders'>
+        {{#modal-button
+          modaltarget='#todo_create'
+          modalbutton='Add Todos'
+        }}{{/modal-button}}
+        <hr />
+        <div class='row'>
+          {{#if @model.todos}}
+            {{#each @model.todos as |todo|}}
+              <div class='col-lg-6'>
+                {{todos todo=todo setTodo=this.setTodo}}
+              </div>
+            {{/each}}
+            {{#modal-dialog modalId='todo_edit' modalTitle='View Todo'}}
+              {{todo/add-todo todo=this.todo}}
+            {{/modal-dialog}}
+          {{else}}
+            {{no-data-overlay message='No todos are here... yet.'}}
+          {{/if}}
+        </div>
+        {{#modal-dialog modalId='todo_create' modalTitle='Create Todo'}}
+          {{todo/add-todo}}
+        {{/modal-dialog}}
+      </div>
+
     </div>
 
   </div>
-
-</div>
 {{/page-content}}
