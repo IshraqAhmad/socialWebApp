@@ -9,6 +9,15 @@ export default class UsersViewController extends Controller {
   @tracked comments = null;
 
   @action
+  async refreshPosts() {
+    let response = await fetch(
+      environment.apiURL + 'users/' + this.model.user.id + '/posts'
+    );
+    let result = await response.json();
+    this.post = result.data;
+  }
+
+  @action
   async setPost(post) {
     this.post = post;
     let response = await fetch(
