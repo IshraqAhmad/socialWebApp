@@ -1,5 +1,13 @@
 <!-- Todo -->
+
 <div class='card'>
+  <a
+      href='#'
+      {{!-- class='btn btn-link p-0 mt-2 mt-sm-0' --}}
+      data-toggle='modal'
+      data-target='#todo_edit'
+      {{on 'click' this.onOpen}}
+    >
   <div class='card-body'>
     <div class='d-flex flex-wrap justify-content-between mb-2'>
       <span
@@ -19,5 +27,7 @@
       {{@todo.title}}
     </h6>
   </div>
+  </a>
 </div>
+
 <!-- /Todo -->

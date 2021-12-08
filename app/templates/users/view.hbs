@@ -122,6 +122,13 @@
 
       <div class='tab-pane fade' id='orders'>
         <!-- User Todo -->
+        <button
+          type='button'
+          class='btn btn-light'
+          data-toggle='modal'
+          data-target='#todo_create'
+        >Add Todos</button>
+        <hr />
         <div class='row'>
           {{#if @model.todos}}
             {{#each @model.todos as |todo|}}
@@ -129,10 +136,18 @@
                 {{todos todo=todo}}
               </div>
             {{/each}}
+             <ModalDialog @modalId='todo_edit' @modalTitle='View Todo'>
+              <h3>{{this.todo.status}}</h3>
+              <p>{{this.todo.title}}</p>
+              {{todo/add-todo todo=this.todo}}
+            </ModalDialog>
           {{else}}
             {{no-data-overlay message='No todos are here... yet.'}}
           {{/if}}
         </div>
+        <ModalDialog @modalId='todo_create' @modalTitle='Create Todo' >
+           {{todo/add-todo}}
+        </ModalDialog>
       </div>
 
     </div>
