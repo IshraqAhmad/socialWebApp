@@ -1,6 +1,6 @@
 {{page-title 'Edit'}}
 {{page-header heading='Users - Edit'}}
-{{#page-content}}
+<PageContent>
   <ValidatedForm
     @model={{changeset this.model this.UserValidations}}
     @on-submit={{action 'submit'}}
@@ -12,4 +12,4 @@
     {{f.input label='Email' name='email'}}
     {{f.submit label='Save'}}
   </ValidatedForm>
-{{/page-content}}
+</PageContent>

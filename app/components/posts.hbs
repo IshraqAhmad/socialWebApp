@@ -23,7 +23,13 @@
           71</a></li>
     </ul>
 
-    <a href='#' class='btn btn-link p-0 mt-2 mt-sm-0'>Read post</a>
+    <a
+      href='#'
+      class='btn btn-link p-0 mt-2 mt-sm-0'
+      data-toggle='modal'
+      data-target='#post_edit'
+      {{on 'click' this.onOpen}}
+    >Read post</a>
   </div>
 </div>
 {{yield}}
